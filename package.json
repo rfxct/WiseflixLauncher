@@ -1,0 +1,41 @@
+{
+  "name": "wiseflix",
+  "version": "0.0.1",
+  "description": "Cliente para acessar o Wiseflix.me",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "author": "marc <github.com/rfxct>",
+  "repository": {
+    "url": "https://github.com/rfxct/WiseflixLauncher"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "discord-rpc": "^3.2.0"
+  },
+  "build": {
+    "productName": "Wiseflix",
+    "appId": "scripter.Wiseflix",
+    "win": {
+      "target": [
+        "portable"
+      ]
+    },
+    "portable": {
+      "artifactName": "Wiseflix.exe"
+    },
+    "directories": {
+      "output": "build",
+      "app": "./",
+      "buildResources": "resources"
+    }
+  },
+  "devDependencies": {
+    "electron": "^13.1.1",
+    "electron-builder": "^22.10.5"
+  }
+}

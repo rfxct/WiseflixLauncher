@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://wiseflix.me/public/static/favicon.ico">
+
+    <title>Wiseflix - Carregando...</title>
+</head>
+
+<body onload="isItUp('https://wiseflix.me/public/static/favicon.ico')">
+
+    <main>
+        <i id="brand">WISEFLIX</i>
+        <div id="loading">
+            <span>Aguarde, estamos preparando o Wiseflix para você :)</span>
+            <div class="loader"></div>
+        </div>
+        <span style="display: none" id="down">Oops! Não foi possível acessar o Wiseflix :/</span>
+        <span style="display: none" id="up">Você será redirecionado para o Wiseflix em instantes!</span>
+    </main>
+    <script>
+        async function wait(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms))
+        }
+
+        async function isItUp(url) {
+            await wait(2000)
+
+            fetch(url, { mode: 'no-cors', method: 'GET' })
+                .then(async () => {
+                    document.getElementById('up').style.display = 'block'
+                    await wait(2000)
+                    window.location.href = 'https://wiseflix.me'
+                }).catch(() => {
+                    document.getElementById('down').style.display = 'block'
+                })
+            document.getElementById('loading').style.display = 'none'
+        }
+    </script>
+</body>
+
+</html>
